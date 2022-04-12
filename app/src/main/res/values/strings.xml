@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">HelloWorld</string>
+    <string name="Author_Info">Hello World! Kassaye, Namuna 04-11-2022</string>
+    <string name="button_text">ClickMe</string>
+</resources>
