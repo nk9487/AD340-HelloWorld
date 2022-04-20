@@ -1,5 +1,16 @@
 <resources>
     <string name="app_name">HelloWorld</string>
-    <string name="Author_Info">Hello World! Kassaye, Namuna 04-11-2022</string>
+    <string name="Author_Info">Kassaye, Namuna 04_18_2022</string>
     <string name="button_text">ClickMe</string>
+    <string name="name_input">PLEASE ENTER NAME</string>
+    <string name="welcome">WELCOME</string>
+    <string name="please_enter_your_name">Please enter your name</string>
+    <string name="please_enter_your_user_name">Please enter your user name</string>
+    <string name="please_enter_a_valid_email">Please enter a valid email</string>
+    <string name="please_enter_your_user_birthday">Please enter your user birthday</string>
+    <string name="back_button">BACK</string>
+    <string name="submit_button">SUBMIT</string>
+    <string name="sign_up">sign up</string>
+    <string name="guest">guest</string>
+    <string name="sign_in">sign in</string>
 </resources>
