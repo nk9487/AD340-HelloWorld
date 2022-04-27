@@ -13,4 +13,7 @@
     <string name="sign_up">sign up</string>
     <string name="guest">guest</string>
     <string name="sign_in">sign in</string>
+    <string name="thank_you_notification">Thank You For Signing up</string>
+    <string name="emoji_happy">:)</string>
+    <string name="thank_you_txt">\"Thanks For Signing Up \"</string>
 </resources>
