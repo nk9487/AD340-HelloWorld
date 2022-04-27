@@ -20,7 +20,10 @@ import java.util.Locale;
 public class MainActivity extends AppCompatActivity {
     private EditText nameField;
     private EditText emailField;
-    private EditText userField;
+    private EditText userNameField;
+    private EditText descriptionField;
+    private EditText occupationField;
+    private EditText ageField;
     final Calendar myCalendar= Calendar.getInstance();
     private EditText datePicked;
     private Button submit;
@@ -37,16 +40,21 @@ public class MainActivity extends AppCompatActivity {
 
         nameField = findViewById(R.id.name);
         emailField = findViewById(R.id.email);
-        userField = findViewById(R.id.user_name);
+        userNameField = findViewById(R.id.user_name);
+        occupationField = findViewById(R.id.occupation);
+        descriptionField = findViewById(R.id.description);
         datePicker();
         //goBack();
     }
 
     // validating
     public void onSubmit(View view){
-        String name = nameField.toString();
-        String email = emailField.toString();
-        String username = userField.toString();
+        String name = nameField.getText().toString();
+        String email = emailField.getText().toString();
+        String username = userNameField.getText().toString();
+        String age = ageField.getText().toString();
+        String occupation = occupationField.getText().toString();
+        String description = descriptionField.getText().toString();
         //validate missing fields
         if (name.equals("") || email.equals("") || username.equals("")){
             Toast.makeText(getApplicationContext(),getString(R.string.please_enter_a_valid_email),Toast.LENGTH_LONG).show();
@@ -59,6 +67,9 @@ public class MainActivity extends AppCompatActivity {
         }
         Intent intent = new Intent(getApplicationContext(), Welcome.class);
         intent.putExtra(Constants.USER_NAME_KEY, username);
+        intent.putExtra(Constants.USER_DESCRIPTION_KEY, description);
+        intent.putExtra(Constants.USER_OCCUPATION_KEY, occupation);
+
         startActivity(intent);
     }
     private void datePicker(){
@@ -97,8 +108,5 @@ public class MainActivity extends AppCompatActivity {
                 startActivity(intent);
             }
         });
-    }
-    public String getName(){
-        return userField.toString();
     }
 }
