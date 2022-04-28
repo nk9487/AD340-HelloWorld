@@ -4,6 +4,8 @@ plugins {
 
 }
 
+/////apply from: '../jacoco.gradle'
+
 android {
     compileSdk 32
 
