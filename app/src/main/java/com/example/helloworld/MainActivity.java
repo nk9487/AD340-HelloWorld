@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         userNameField = findViewById(R.id.user_name);
         occupationField = findViewById(R.id.occupation);
         descriptionField = findViewById(R.id.description);
-        datePicker();
+        //datePicker();
         //goBack();
     }
 
