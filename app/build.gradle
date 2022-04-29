@@ -9,7 +9,7 @@ android {
     compileSdk 32
 
     defaultConfig {
-        applicationId "com.example.ad340kylebastienweeklyassignments"
+        applicationId "com.example.helloworld"
         minSdk 29
         targetSdk 32
         versionCode 1
