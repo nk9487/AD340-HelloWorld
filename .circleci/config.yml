@@ -182,7 +182,7 @@ jobs:
           command: mkdir firebase
       - run:
           name: Download instrumented test results from Firebase Test Lab
-          command: gsutil -m cp -r -U gs://kcdx9k4arh2fq-iq228qph37nbk/${CIRCLE_SHA1} /root/workspace/firebase/
+          command: gsutil -m cp -r -U gs://test-lab-kcdx9k4arh2fq-iq228qph37nbk/${CIRCLE_SHA1} /root/workspace/firebase/
       - *persist_firebase_workspace
       - store_artifacts:
           path: firebase/
