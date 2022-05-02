@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:id="@+id/relativeLayout"
+    android:id="@+id/welcomeScreen"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -38,40 +38,42 @@
 
     <TextView
         android:id="@+id/id_occupation"
-        android:text="@string/welcom_occupation"
-        android:textStyle="bold"
-        android:shadowColor="@color/black"
-        android:textColor="@color/black"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@id/id_image"
         android:layout_below="@+id/id_age"
-        android:layout_margin="@dimen/text_margin"/>
-
-    <TextView
-        android:id="@+id/id_description"
-        android:layout_width="wrap_content"
-        android:layout_height="150dp"
-        android:textStyle="bold"
-        android:shadowColor="@color/black"
-        android:textColor="@color/black"
-        android:layout_below="@+id/id_occupation"
         android:layout_alignLeft="@id/id_image"
-        android:layout_margin="@dimen/text_margin"
         android:layout_marginStart="@dimen/text_margin"
         android:layout_marginTop="@dimen/text_margin"
         android:layout_marginEnd="@dimen/text_margin"
         android:layout_marginBottom="@dimen/text_margin"
-        android:text="@string/welcome_description" />
+        android:shadowColor="@color/black"
+        android:text="@string/welcome_occupation"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/id_description"
+        android:layout_width="wrap_content"
+        android:layout_height="118dp"
+        android:layout_below="@+id/id_occupation"
+        android:layout_alignLeft="@id/id_image"
+        android:layout_marginStart="@dimen/text_margin"
+        android:layout_marginTop="@dimen/text_margin"
+        android:layout_marginEnd="@dimen/text_margin"
+        android:layout_marginBottom="@dimen/text_margin"
+        android:shadowColor="@color/black"
+        android:text="@string/welcome_description"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
 
     <TextView
         android:id="@+id/thank_you_user"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_height="20dp"
         android:layout_centerInParent="true" />
 
     <Button
-        android:id="@+id/button_back"
+        android:id="@+id/welcome_button_back"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/id_occupation"
@@ -81,7 +83,7 @@
         android:layout_marginEnd="@dimen/button_margin"
         android:layout_marginBottom="@dimen/button_margin"
         android:onClick="onBackClick"
-        android:text="Back" />
+        android:text="@string/welcome_back_button" />
 
 
 </RelativeLayout>

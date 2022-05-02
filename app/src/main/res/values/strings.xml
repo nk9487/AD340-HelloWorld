@@ -1,6 +1,6 @@
 <resources>
     <string name="app_name">HelloWorld</string>
-    <string name="Author_Info">Kassaye, Namuna 04_18_2022</string>
+    <string name="Author_Info">Kassaye, Namuna 04_30_2022</string>
     <string name="button_text">ClickMe</string>
     <string name="name_input">PLEASE ENTER NAME</string>
     <string name="welcome">WELCOME</string>
@@ -21,6 +21,14 @@
     <string name="profile_picture">Profile picture</string>
     <string name="name">name</string>
     <string name="age">Age</string>
-    <string name="welcom_occupation">Occupation</string>
+    <string name="welcome_occupation">Occupation</string>
     <string name="welcome_description">Description</string>
+    <string name="please_enter_a_valid_content">please enter vlaues to the fields</string>
+    <string name="eighteen_error">You must be at least 18 year old to sign up</string>
+    <string name="tap_to_select_date_of_birth">Tap to select date of birth</string>
+    <string name="please_enter_your_full_name">please_enter_your_full_name</string>
+    <string name="reset">RESET</string>
+    <string name="thanks_message">Thank You For Signing up</string>
+    <string name="text_slash_symbol">/</string>
+    <string name="welcome_back_button">Back</string>
 </resources>

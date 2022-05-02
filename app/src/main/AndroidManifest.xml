@@ -11,6 +11,10 @@
         android:theme="@style/Theme.HelloWorld"
         android:requestLegacyExternalStorage="true">
 
+        <activity
+            android:name=".Welcome"
+            android:exported="false">
+        </activity>
 
         <activity
             android:name=".MainActivity"
@@ -19,11 +23,6 @@
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <activity
-            android:name=".Welcome"
-            android:exported="true">
         </activity>
 
 

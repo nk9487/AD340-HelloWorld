@@ -1,34 +1,33 @@
 package com.example.helloworld;
 
 import android.app.DatePickerDialog;
+import android.app.Dialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Patterns;
 import android.view.View;
-import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.fragment.app.DialogFragment;
 
-import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.util.Calendar;
-import java.util.Locale;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements DatePickerDialog.OnDateSetListener {
     private EditText nameField;
     private EditText emailField;
     private EditText userNameField;
     private EditText descriptionField;
     private EditText occupationField;
-    private EditText ageField;
-    final Calendar myCalendar= Calendar.getInstance();
-    private EditText datePicked;
-    private Button submit;
-    private Button back;
-    private TextView thankYouName;
+    private  EditText ageField;
+    private   int dobYear = 0;
+    private  int dobMonth = 0;
+    private   int dobDay = 0;
+    private   int calculatedYear;
 
 
     @Override
@@ -37,14 +36,13 @@ public class MainActivity extends AppCompatActivity {
 
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        //ageField = findViewById(R.id.birthday_field);
+        nameField = findViewById(R.id.full_name_field);
+        emailField = findViewById(R.id.email_field);
+        userNameField = findViewById(R.id.user_name_field);
+        occupationField = findViewById(R.id.occupation_field);
+        descriptionField = findViewById(R.id.description_field);
 
-        nameField = findViewById(R.id.name);
-        emailField = findViewById(R.id.email);
-        userNameField = findViewById(R.id.user_name);
-        occupationField = findViewById(R.id.occupation);
-        descriptionField = findViewById(R.id.description);
-        //datePicker();
-        //goBack();
     }
 
     // validating
@@ -52,12 +50,13 @@ public class MainActivity extends AppCompatActivity {
         String name = nameField.getText().toString();
         String email = emailField.getText().toString();
         String username = userNameField.getText().toString();
-        String age = ageField.getText().toString();
+        //String age = ageField.getText().toString();
         String occupation = occupationField.getText().toString();
         String description = descriptionField.getText().toString();
         //validate missing fields
-        if (name.equals("") || email.equals("") || username.equals("")){
-            Toast.makeText(getApplicationContext(),getString(R.string.please_enter_a_valid_email),Toast.LENGTH_LONG).show();
+        if (username.equals("") || name.equals("") || occupation.equals("") || description.equals("")||
+                email.equals("") || dobMonth ==0 || dobDay == 0 || dobYear == 0  ){
+            Toast.makeText(getApplicationContext(),getString(R.string.please_enter_a_valid_content),Toast.LENGTH_LONG).show();
             return;
         }
         //validate email
@@ -65,48 +64,97 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),getString(R.string.please_enter_a_valid_email),Toast.LENGTH_LONG).show();
             return;
         }
+
+
+        if(!checkAge()){
+            Toast.makeText(getApplicationContext(), getString(R.string.eighteen_error), Toast.LENGTH_LONG).show();
+            return;
+
+        }
         Intent intent = new Intent(getApplicationContext(), Welcome.class);
         intent.putExtra(Constants.USER_NAME_KEY, username);
+        //intent.putExtra(Constants.USER_AGE_KEY, age);
         intent.putExtra(Constants.USER_DESCRIPTION_KEY, description);
         intent.putExtra(Constants.USER_OCCUPATION_KEY, occupation);
 
         startActivity(intent);
     }
-    private void datePicker(){
-        //Adding date picker
-        datePicked = (EditText)findViewById(R.id.birthday);
-        DatePickerDialog.OnDateSetListener date = new DatePickerDialog.OnDateSetListener(){
-            @Override
-            public void onDateSet(DatePicker v, int year, int month, int day){
-                myCalendar.set(Calendar.YEAR,year);
-                myCalendar.set(Calendar.MONTH,month);
-                myCalendar.set(Calendar.DATE,day);
-                updateLabel();
-            }
-        };
-        datePicked.setOnClickListener(new View.OnClickListener(){
-            @Override
-            public void onClick(View view) {
-                new DatePickerDialog(MainActivity.this,date,
-                        myCalendar.get(Calendar.DAY_OF_YEAR),
-                        myCalendar.get(Calendar.MONTH),
-                        myCalendar.get(Calendar.DAY_OF_MONTH)).show();
-            }
-        });
 
+
+
+
+
+    public void onDobClick(View view) {
+        DialogFragment newFragment = new DatePickerFragment();
+        newFragment.show(getSupportFragmentManager(), "datePicker");
     }
-    private void updateLabel(){
-        String myFormat="MM/dd/yy";
-        SimpleDateFormat dateFormat=new SimpleDateFormat(myFormat, Locale.US);
-        datePicked.setText(dateFormat.format(myCalendar.getTime()));
-    }
-    private void goBack(){
-        back = (Button)findViewById(R.id.button_back);
+
+
+    /*private void reset(){
+        back = findViewById(R.id.activity_button_back);
         back.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);;
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
                 startActivity(intent);
             }
         });
+    }*/
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState) {
+        super.onSaveInstanceState(outState);
+        outState.putString(Constants.USER_AGE_KEY, ageField.getText().toString());
     }
+
+    @Override
+    protected void onRestoreInstanceState(@NonNull Bundle savedInstanceState) {
+        super.onRestoreInstanceState(savedInstanceState);
+        if (savedInstanceState.containsKey(Constants.USER_AGE_KEY)) {
+            ageField.setText(savedInstanceState.getString(Constants.USER_AGE_KEY));
+        }
+    }
+
+    @Override
+    protected void onRestart() {
+        super.onRestart();
+        nameField.setText("");
+        userNameField.setText("");
+        emailField.setText("");
+        ageField.setText("");
+        occupationField.setText("");
+        descriptionField.setText("");
+        dobYear = 0;
+        dobDay = 0;
+        dobMonth = 0;
+    }
+    @Override
+    public void onDateSet(DatePicker view, int year, int month, int day) {
+        ageField = findViewById(R.id.birthday_field);
+        month = month + 1;
+        dobYear = year;
+        dobMonth = month;
+        dobDay = day;
+        ageField.setText(month + getString(R.string.text_slash_symbol)+ day + getString(R.string.text_slash_symbol)+ year);
+    }
+    private boolean checkAge(){
+        int todayDate = LocalDate.now().getYear();
+        int instantDOB =   LocalDate.of(dobYear,dobMonth,dobDay).getYear();
+        int calculatedYear = todayDate - instantDOB;
+        return calculatedYear >= 18;
+    }
+
+    public static class DatePickerFragment extends DialogFragment  {
+        @NonNull
+        @Override
+        public Dialog onCreateDialog(Bundle savedInstances){
+            final Calendar c = Calendar.getInstance();
+            int year = c.get(Calendar.YEAR);
+            int month = c.get(Calendar.MONTH);
+            int day = c.get(Calendar.DAY_OF_MONTH);
+            return new DatePickerDialog(getActivity(), (DatePickerDialog.OnDateSetListener) getActivity(),year, month,day);
+        }
+
+    }
+
+
 }
