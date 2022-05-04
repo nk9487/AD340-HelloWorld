@@ -19,32 +19,33 @@ public class Welcome extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_welcome);
 
-//        name = findViewById(R.id.id_name);
-//        age= findViewById(R.id.id_age);
-//        occupation = findViewById(R.id.id_occupation);
-//        description = findViewById(R.id.id_description);
+        name = findViewById(R.id.id_name);
+        age= findViewById(R.id.id_age);
+        occupation = findViewById(R.id.id_occupation);
+        description = findViewById(R.id.id_description);
 
 
-        welcome = findViewById(R.id.thank_you_user);
+        //welcome = findViewById(R.id.thank_you_user);
         Intent intent = getIntent();
         Bundle bundle = intent.getExtras();
 
         if (bundle != null){
+//            if(bundle.containsKey(Constants.USER_NAME_KEY)){
+//                welcome.setText(getString(R.string.thanks_message)+bundle.getString(Constants.USER_NAME_KEY));
+//            }
             if(bundle.containsKey(Constants.USER_NAME_KEY)){
-                welcome.setText(getString(R.string.thanks_message)+bundle.getString(Constants.USER_NAME_KEY));
+                name.setText(bundle.getString(Constants.USER_NAME_KEY));
             }
-//            /*if(bundle.containsKey(Constants.USER_AGE_KEY)){
-//                welcome.setText(""+bundle.getString(Constants.USER_AGE_KEY));
-//            }
-//            if(bundle.containsKey(Constants.USER_OCCUPATION_KEY)){
-//                welcome.setText(bundle.getString(Constants.USER_OCCUPATION_KEY));
-//            }
-//            if(bundle.containsKey(Constants.USER_DESCRIPTION_KEY)){
-//                welcome.setText(bundle.getString(Constants.USER_DESCRIPTION_KEY));
-//            }*/
+            if(bundle.containsKey(Constants.USER_AGE_KEY)){
+                age.setText(bundle.getString(Constants.USER_AGE_KEY));
+            }
+            if(bundle.containsKey(Constants.USER_OCCUPATION_KEY)){
+               occupation.setText(bundle.getString(Constants.USER_OCCUPATION_KEY));
+            }
+            if(bundle.containsKey(Constants.USER_DESCRIPTION_KEY)){
+                description.setText(bundle.getString(Constants.USER_DESCRIPTION_KEY));
+            }
         }
-        onBackClick();
-
     }
     private void onBackClick(){
         finish();
@@ -56,7 +57,5 @@ public class Welcome extends AppCompatActivity {
 //            }
 //        });
     }
-
-
 
 }

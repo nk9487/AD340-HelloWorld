@@ -31,4 +31,12 @@
     <string name="thanks_message">Thank You For Signing up</string>
     <string name="text_slash_symbol">/</string>
     <string name="welcome_back_button">Back</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="app_setting">App Setting</string>
+    <string name="user_profile_setting">user profile setting</string>
+    <string name="profile">profile</string>
+    <string name="setting">setting</string>
+    <string name="matches">matches</string>
+    <string name="pick_date">pick date</string>
 </resources>

@@ -71,13 +71,12 @@
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
 
-    <EditText
+    <TextView
         android:id="@+id/birthday_field"
         android:inputType = "date"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="324dp"
-        android:onClick="onDobClick"
         android:hint="@string/tap_to_select_date_of_birth"
         app:layout_constraintTop_toTopOf="parent"
         tools:layout_editor_absoluteX="0dp" />
@@ -94,12 +93,13 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/activity_button_back"
+        android:id="@+id/activity_date_picker"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="418dp"
         android:layout_marginEnd="253dp"
-        android:text="@string/reset"
+        android:text="@string/pick_date"
+        android:onClick="onDobClick"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
