@@ -1,14 +1,89 @@
 <?xml version="1.0" encoding="utf-8"?>
-<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/welcomeScreen"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".ProfileFragment">
+    android:layout_height="match_parent">
 
-    <!-- TODO: Update blank fragment layout -->
-    <TextView
+    <ImageView
+        android:contentDescription="@string/profile_picture"
+        android:id="@+id/id_image"
+        android:src="@color/design_default_color_primary_variant"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/user_profile_setting" />
+        android:layout_height="400dp"
+        android:layout_above="@id/thank_you_user"
+        android:layout_margin="@dimen/button_margin"/>
+    <TextView
+        android:id="@+id/id_name"
+        android:text="@string/name"
+        android:textStyle="bold"
+        android:shadowColor="@color/black"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/id_image"
+        android:layout_below="@+id/id_image"
+        android:layout_margin="@dimen/text_margin"/>
 
-</FrameLayout>
+    <TextView
+        android:id="@+id/id_age"
+        android:text="@string/age"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@id/id_image"
+        android:layout_below="@+id/id_name"
+        android:layout_margin="@dimen/text_margin"/>
+
+    <TextView
+        android:id="@+id/id_occupation"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_age"
+        android:layout_alignLeft="@id/id_image"
+        android:layout_marginStart="@dimen/text_margin"
+        android:layout_marginTop="@dimen/text_margin"
+        android:layout_marginEnd="@dimen/text_margin"
+        android:layout_marginBottom="@dimen/text_margin"
+        android:shadowColor="@color/black"
+        android:text="@string/welcome_occupation"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/id_description"
+        android:layout_width="wrap_content"
+        android:layout_height="118dp"
+        android:layout_below="@+id/id_occupation"
+        android:layout_alignLeft="@id/id_image"
+        android:layout_marginStart="@dimen/text_margin"
+        android:layout_marginTop="@dimen/text_margin"
+        android:layout_marginEnd="@dimen/text_margin"
+        android:layout_marginBottom="@dimen/text_margin"
+        android:shadowColor="@color/black"
+        android:text="@string/welcome_description"
+        android:textColor="@color/black"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/thank_you_user"
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:layout_centerInParent="true" />
+
+    <Button
+        android:id="@+id/welcome_button_back"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/id_occupation"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="@dimen/button_margin"
+        android:layout_marginTop="172dp"
+        android:layout_marginEnd="@dimen/button_margin"
+        android:layout_marginBottom="@dimen/button_margin"
+        android:onClick="onBackClick"
+        android:text="@string/welcome_back_button" />
+
+
+</RelativeLayout>
