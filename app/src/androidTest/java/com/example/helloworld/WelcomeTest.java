@@ -1,9 +1,5 @@
 package com.example.helloworld;
 
-import static androidx.test.espresso.Espresso.onView;
-import static androidx.test.espresso.action.ViewActions.click;
-import static androidx.test.espresso.matcher.ViewMatchers.withId;
-
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 
 import org.junit.Rule;
@@ -22,7 +18,13 @@ public class WelcomeTest {
     }*/
     @Test
     public void clickingOnBack() {
-        onView(withId(R.id.welcome_button_back)).perform(click());
-
-    }
+//        onView(withContentDescription("Open navigation drawer")).perform(click());
+//        onView(withId(R.id.matches_menu_item)).perform(click());
+//
+//        onView(isRoot()).perform(HelpersViewMatcher.waitView(withText("Cool Guy Mike"), 5000));
+//
+//        onView(withRecyclerView(R.id.recycler_view).atPosition(0))
+//                .check(matches(hasDescendant(withText("Cool Guy Mike"))));
+   }
 }
+
