@@ -1,13 +1,13 @@
 package com.example.helloworld;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.view.GravityCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentManager;
@@ -33,7 +33,7 @@ public class Welcome extends AppCompatActivity {
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         drawer = findViewById(R.id.drawer_layout);
-        //drawerToggle = setupDrawerToggle();
+        drawerToggle = setupDrawerToggle();
         navDrawer = findViewById(R.id.navDrawer);
 
 
@@ -49,24 +49,38 @@ public class Welcome extends AppCompatActivity {
                 // TODO: 5/10/2022  check age  
                 profileData = new ProfileData(  bundle.getString(Constants.USER_NAME_KEY),
                              (Integer.parseInt(bundle.getString(Constants.USER_AGE_KEY))),
-                                                bundle.getString(Constants.USER_AGE_KEY),
-                                                bundle.getString(Constants.USER_AGE_KEY));          
+                                                bundle.getString(Constants.USER_OCCUPATION_KEY),
+                                                bundle.getString(Constants.USER_DESCRIPTION_KEY));
             }
         }
         setupDrawerContent(navDrawer, profileData);
-//        ProfileFragment profileFragment = new ProfileFragment();
-//
-//        profileFragment.setProfileData(profileData);
-//        FragmentManager fragmentManager = getSupportFragmentManager();
-//
-//        fragmentManager.beginTransaction().replace(R.id.content, profileFragment).commit();
-//        setTitle(getString(R.string.profile));
+        ProfileFragment profileFragment = new ProfileFragment();
+
+        profileFragment.setProfileData(profileData);
+        FragmentManager fragmentManager = getSupportFragmentManager();
+
+        fragmentManager.beginTransaction().replace(R.id.content, profileFragment).commit();
+        setTitle(getString(R.string.profile));
+    }
+
+    private ActionBarDrawerToggle setupDrawerToggle() {
+        return new ActionBarDrawerToggle(this, drawer, toolbar, R.string.drawer_open,
+                R.string.drawer_close);
     }
 
 
+    @Override
+    protected void onPostCreate(Bundle savedInstanceState) {
+        super.onPostCreate(savedInstanceState);
+        // Sync the toggle state after onRestoreInstanceState has occurred.
+        drawerToggle.syncState();
+    }
 
-
-
+    @Override
+    public void onConfigurationChanged(Configuration newConfig) {
+        super.onConfigurationChanged(newConfig);
+        drawerToggle.onConfigurationChanged(newConfig);
+    }
 
     private void setupDrawerContent(NavigationView navigationView, ProfileData profileData) {
         navigationView.setNavigationItemSelectedListener(
@@ -98,29 +112,21 @@ public class Welcome extends AppCompatActivity {
 
         }
 
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.content, fragment).commit();
-
-        // Highlight the selected item has been done by NavigationView
-        menuItem.setChecked(true);
         // Set action bar title
         setTitle(menuItem.getTitle());
         // Close the navigation drawer
         drawer.closeDrawers();
     }
 
-
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-      switch (item.getItemId()){
-          case android.R.id.home:
-              drawer.openDrawer(GravityCompat.START);
+        if(drawerToggle.onOptionsItemSelected(item)){
               return true;
       }
       return    super.onOptionsItemSelected(item);
     }
 
-    private void onBackClick(){
+    public void onBackClick(){
         finish();
     }
 

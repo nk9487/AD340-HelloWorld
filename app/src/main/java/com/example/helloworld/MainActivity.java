@@ -93,17 +93,6 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
         newFragment.show(getSupportFragmentManager(), "datePicker");
     }
 
-
-    /*private void reset(){
-        back = findViewById(R.id.activity_button_back);
-        back.setOnClickListener(new View.OnClickListener() {
-            public void onClick(View v){
-                Intent intent = new Intent(MainActivity.this, MainActivity.class);
-                startActivity(intent);
-            }
-        });
-    }*/
-
     @Override
     public void onSaveInstanceState(@NonNull Bundle outState) {
         super.onSaveInstanceState(outState);

@@ -16,17 +16,17 @@ public class ProfileFragment extends Fragment {
         // Inflate the layout for this fragment
         View view = inflater.inflate(R.layout.fragment_profile, container, false);
 
-        TextView name = view.findViewById(R.id.user_name_field);
-        TextView occupation = view.findViewById(R.id.occupation_field);
+        TextView name = view.findViewById(R.id.id_name);
+        TextView occupation = view.findViewById(R.id.id_occupation);
         TextView age = view.findViewById(R.id.id_age);
-        TextView description = view.findViewById(R.id.description_field);
+        TextView description = view.findViewById(R.id.id_description);
 
-//        if (this.profileData != null) {
-//            name.setText(this.profileData.getName());
-//            age.setText("" + this.profileData.getAge());
-//            occupation.setText(this.profileData.getOccupation());
-//            description.setText(this.profileData.getDescription());
-//        }
+        if (this.profileData != null) {
+            name.setText(this.profileData.getName());
+            age.setText("" + this.profileData.getAge());
+            occupation.setText(this.profileData.getOccupation());
+            description.setText(this.profileData.getDescription());
+        }
         return view;
     }
 

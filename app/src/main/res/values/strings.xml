@@ -39,4 +39,6 @@
     <string name="setting">setting</string>
     <string name="matches">matches</string>
     <string name="pick_date">pick date</string>
+    <string name="drawer_open">open navigation drawer</string>
+    <string name="drawer_close">close navigation drawer</string>
 </resources>
