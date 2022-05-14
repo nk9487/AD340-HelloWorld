@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
 
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
@@ -126,7 +127,7 @@ public class Welcome extends AppCompatActivity {
       return    super.onOptionsItemSelected(item);
     }
 
-    public void onBackClick(){
+    public void onBackClick(View view){
         finish();
     }
 

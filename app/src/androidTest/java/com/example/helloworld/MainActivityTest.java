@@ -34,26 +34,26 @@ public class MainActivityTest {
     }
 
 
-//    @Test
-//    public void canGoThroughForm() {
-//        onView(withId(id.full_name_field)).perform(replaceText("Namuna kassaye"));
-//        onView(withId(id.email_field)).perform(replaceText("abcd@gmail.com"));
-//        onView(withId(id.user_name_field)).perform(replaceText("Namuna"));
-//        onView(withId(id.description_field)).perform(replaceText("I dont know"));
-//        onView(withId(id.occupation_field)).perform(replaceText("AD Student"));
-//
-//        onView(withId(id.activity_date_picker)).perform(click());
-//
-//        onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-//                .perform(PickerActions.setDate(2000, 2 + 1, 5));
-//
-//        onView(withId(android.R.id.button1)).perform(click());
-//
-//        onView(withId(id.submit_form)).perform(click());
-//
-//        onView(withId(id.user_name_field))
-//                .check(matches(withText("Namuna")));
-//    }
+    @Test
+    public void canGoThroughForm() {
+        onView(withId(id.full_name_field)).perform(replaceText("Namuna kassaye"));
+        onView(withId(id.email_field)).perform(replaceText("abcd@gmail.com"));
+        onView(withId(id.user_name_field)).perform(replaceText("Namuna"));
+        onView(withId(id.description_field)).perform(replaceText("I dont know"));
+        onView(withId(id.occupation_field)).perform(replaceText("AD Student"));
+
+        onView(withId(id.activity_date_picker)).perform(click());
+
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
+                .perform(PickerActions.setDate(2000, 2 + 1, 5));
+
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(id.submit_form)).perform(click());
+
+        onView(withId(id.id_name))
+                .check(matches(withText("Namuna")));
+    }
 
     @Test
     public void cannotGoThroughFormWithMissingName() {
@@ -192,29 +192,29 @@ public class MainActivityTest {
         onView(withText("3/5/2000")).check(doesNotExist());
     }
 
-//    @Test
-//    public void canGoBackFromWelcomeScreen() {
-//        onView(withId(R.id.full_name_field)).perform(replaceText("Namuna Kassaye"));
-//        onView(withId(R.id.email_field)).perform(replaceText("abcd@gmail.com"));
-//        onView(withId(R.id.user_name_field)).perform(replaceText("Namuna"));
-//        onView(withId(R.id.description_field)).perform(replaceText("I am a cool person"));
-//        onView(withId(R.id.occupation_field)).perform(replaceText("AD Student"));
-//
-//        onView(withId(R.id.activity_date_picker)).perform(click());
-//
-//        onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
-//                .perform(PickerActions.setDate(2000, 2 + 1, 5));
-//
-//        onView(withId(android.R.id.button1)).perform(click());
-//
-//        onView(withId(R.id.submit_form)).perform(click());
-//
-//        onView(withId(id.full_name_field))
-//                .check(matches(withText("Namuna Kassaye")));
-//
-//        onView(withId(id.welcome_button_back)).perform(click());
-//
-//        onView(withId(R.id.full_name_field)).check(matches(withText("")));
-//    }
+    @Test
+    public void canGoBackFromWelcomeScreen() {
+        onView(withId(id.full_name_field)).perform(replaceText("Namuna kassaye"));
+        onView(withId(id.email_field)).perform(replaceText("abcd@gmail.com"));
+        onView(withId(id.user_name_field)).perform(replaceText("Namuna"));
+        onView(withId(id.description_field)).perform(replaceText("I dont know"));
+        onView(withId(id.occupation_field)).perform(replaceText("AD Student"));
+
+        onView(withId(id.activity_date_picker)).perform(click());
+
+        onView(withClassName(Matchers.equalTo(DatePicker.class.getName())))
+                .perform(PickerActions.setDate(2000, 2 + 1, 5));
+
+        onView(withId(android.R.id.button1)).perform(click());
+
+        onView(withId(id.submit_form)).perform(click());
+
+        onView(withId(id.id_name))
+                .check(matches(withText("Namuna")));
+
+        onView(withId(id.welcome_button_back)).perform(click());
+
+        onView(withId(id.user_name_field)).check(matches(withId(id.user_name_field)));
+    }
 
 }
