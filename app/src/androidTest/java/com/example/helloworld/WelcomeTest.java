@@ -1,30 +1,22 @@
+
 package com.example.helloworld;
 
-import androidx.test.ext.junit.rules.ActivityScenarioRule;
+import androidx.test.ext.junit.runners.AndroidJUnit4;
 
-import org.junit.Rule;
-import org.junit.Test;
+import org.junit.runner.RunWith;
 
+@RunWith(AndroidJUnit4.class)
 public class WelcomeTest {
-
-    @Rule
-    public ActivityScenarioRule<Welcome> activityScenarioRule
-            = new ActivityScenarioRule<>(Welcome.class);
-
-    /*@Test
-    public void hasTextOnScreen() {
-        onView(withId(R.id.thank_you_user))
-                .check(matches(withText(R.string.thanks_message + Constants.USER_NAME_KEY)));
-    }*/
-    @Test
-    public void clickingOnBack() {
+//    @Rule
+//    public ActivityScenarioRule<Welcome> welcomeScreenActivity =
+//            new ActivityScenarioRule<>(Welcome.class);
+//
+//    @Test
+//    public void clickingOnMatchesDrawerItemDisplaysMatchesFragment() {
 //        onView(withContentDescription("Open navigation drawer")).perform(click());
 //        onView(withId(R.id.matches_menu_item)).perform(click());
 //
-//        onView(isRoot()).perform(HelpersViewMatcher.waitView(withText("Cool Guy Mike"), 5000));
-//
-//        onView(withRecyclerView(R.id.recycler_view).atPosition(0))
-//                .check(matches(hasDescendant(withText("Cool Guy Mike"))));
-   }
+//        onView(withId(R.id.matches_menu_item))
+//                .check(matches(withText("matches will be here")));
+//    }
 }
-

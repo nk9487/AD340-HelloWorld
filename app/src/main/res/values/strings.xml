@@ -41,4 +41,7 @@
     <string name="pick_date">pick date</string>
     <string name="drawer_open">open navigation drawer</string>
     <string name="drawer_close">close navigation drawer</string>
+    <string name="matches_image">matches image</string>
+    <string name="like_button">like</string>
+    <string name="you_liked">you liked: %s</string>
 </resources>

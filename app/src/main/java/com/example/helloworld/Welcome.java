@@ -61,7 +61,7 @@ public class Welcome extends AppCompatActivity {
         FragmentManager fragmentManager = getSupportFragmentManager();
 
         fragmentManager.beginTransaction().replace(R.id.content, profileFragment).commit();
-        setTitle(getString(R.string.profile));
+        setTitle(R.string.profile);
     }
 
     private ActionBarDrawerToggle setupDrawerToggle() {
@@ -113,6 +113,10 @@ public class Welcome extends AppCompatActivity {
 
         }
 
+        FragmentManager fragmentManager = getSupportFragmentManager();
+        fragmentManager.beginTransaction().replace(R.id.content, fragment).commit();
+
+        menuItem.setChecked(true);
         // Set action bar title
         setTitle(menuItem.getTitle());
         // Close the navigation drawer
