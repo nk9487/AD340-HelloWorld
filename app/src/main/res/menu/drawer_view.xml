@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
-    android:contentDescription="Open navigation drawer">
+    android:contentDescription="@string/drawer_open">
 
     <group android:checkableBehavior="single">
         <item
