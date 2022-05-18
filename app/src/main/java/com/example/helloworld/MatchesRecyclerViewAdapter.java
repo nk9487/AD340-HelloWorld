@@ -33,8 +33,8 @@ public class MatchesRecyclerViewAdapter extends RecyclerView.Adapter<MatchesView
         if (matchesList != null && position < matchesList.size()) {
             Matches match = matchesList.get(position);
             holder.matchesName.setText(match.getName());
-            holder.matchesDescription.setText(match.getDescription());
-            Picasso.get().load(match.getImageURL()).into(holder.matchesImage);
+            //holder.matchesDescription.setText(match.getDescription());
+            Picasso.get().load(match.getImageUrL()).into(holder.matchesImage);
             holder.likeButton.setOnClickListener((v)->{
                 Toast.makeText(v.getContext(),
                         String.format(v.getContext().getString(R.string.you_liked),match.getName()

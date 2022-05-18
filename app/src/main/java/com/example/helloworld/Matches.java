@@ -2,15 +2,15 @@ package com.example.helloworld;
 
 public class Matches {
     private String name;
-    private String description;
-    private String imageURL;
+    //private String description;
+    private String imageUrL;
     private boolean liked;
+    private String lat;
+    private String longitude;
+    private String uid;
 
-    public Matches(String name, String description, boolean liked, String imageURL) {
-        this.name = name;
-        this.description = description;
-        this.liked = liked;
-        this.imageURL = imageURL;
+    public Matches() {
+
     }
 
 
@@ -22,17 +22,17 @@ public class Matches {
         this.name = name;
     }
 
-    public String getDescription() {
+   /*public String getDescription() {
         return description;
+    }*/
+
+    public String getImageUrL() {
+        return imageUrL;
     }
 
-    public String getImageURL() {
-        return imageURL;
-    }
-
-    public void setDescription(String description) {
+    /*public void setDescription(String description) {
         this.description = description;
-    }
+    }*/
 
     public boolean isLiked() {
         return liked;
@@ -41,7 +41,30 @@ public class Matches {
     public void setLiked(boolean liked) {
         this.liked = liked;
     }
-    public void setImageURL(String imageURL) {
-        this.imageURL = imageURL;
+    public void setimageUrL(String imageUrL) {
+        this.imageUrL = imageUrL;
+    }
+    public String getLat() {
+        return lat;
+    }
+
+    public void setLat(String lat) {
+        this.lat = lat;
+    }
+
+    public String getLongitude() {
+        return longitude;
+    }
+
+    public void setLongitude(String longitude) {
+        this.longitude = longitude;
+    }
+
+    public String getUid() {
+        return uid;
+    }
+
+    public void setUid(String uid) {
+        this.uid = uid;
     }
 }
