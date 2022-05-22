@@ -21,33 +21,34 @@ public class MatchesFragment extends Fragment {
         View view =inflater.inflate(R.layout.fragment_matches, container, false);
         final List<Matches> matchesList = new ArrayList<>();
         vm = new MatchesViewModel();
-//        matchesList.add(new Matches("Alex1", "Funny", false,"https://i.imgur.com/GuAB8OE.jpeg"));
-//        matchesList.add(new Matches("Alex2", "Funny", false,"https://i.imgur.com/GuAB8OE.jpeg"));
-//        matchesList.add(new Matches("Alex3", "Funny", false,"https://i.imgur.com/GuAB8OE.jpeg"));
-//        matchesList.add(new Matches("Alex4", "Funny", false,"https://i.imgur.com/GuAB8OE.jpeg"));
             // Set up the RecyclerView
 
         RecyclerView recyclerView = view.findViewById(R.id.recycler_view);
             recyclerView.setHasFixedSize(true);
             recyclerView.setLayoutManager(new GridLayoutManager(getContext(), 2, GridLayoutManager.VERTICAL, false));
-            MatchesRecyclerViewAdapter adapter = new MatchesRecyclerViewAdapter(matchesList);
-            recyclerView.setAdapter(adapter);
-
-            int largePadding = getResources().getDimensionPixelSize(R.dimen.grid_spacing);
-            int smallPadding = getResources().getDimensionPixelSize(R.dimen.small_grid_spacing);
-            recyclerView.addItemDecoration(new MatchesItemDecoration(largePadding, smallPadding));
-            recyclerView.setAdapter(adapter);
-            vm.getMatches(matches -> {
-                matchesList.addAll(matches);
-                adapter.notifyDataSetChanged();
+            MatchesRecyclerViewAdapter adapter = new MatchesRecyclerViewAdapter(matchesList, (match) -> {
+                match.setLiked(!match.isLiked());
+                vm.updateMatch(match);
             });
+                recyclerView.setAdapter(adapter);
 
-            return view;
-        }
+                int largePadding = getResources().getDimensionPixelSize(R.dimen.grid_spacing);
+                int smallPadding = getResources().getDimensionPixelSize(R.dimen.small_grid_spacing);
+                recyclerView.addItemDecoration(new MatchesItemDecoration(largePadding, smallPadding));
+                //recyclerView.setAdapter(adapter);
+                vm.getMatches(matches -> {
+                    matchesList.clear();
+                    matchesList.addAll(matches);
+                    adapter.notifyDataSetChanged();
+                });
 
-        @Override
-        public void onPause(){
+                return view;
+            }
+
+    @Override
+    public void onPause(){
         super.onPause();
         vm.clear();
-        }
+    }
+
 }

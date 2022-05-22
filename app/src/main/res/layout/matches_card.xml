@@ -40,11 +40,13 @@
                 android:text="matches description"
                 android:textAppearance="?attr/textAppearanceBody2" />
         </LinearLayout>
-        <Button
+        <ImageButton
             android:id="@+id/button_like"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text = "@string/like_button"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:background="@color/white"
+            android:scaleType="fitCenter"
+            android:src="@drawable/heart_icon_default"
             android:layout_gravity="end"
 
             />

@@ -3,8 +3,9 @@ package com.example.helloworld;
 public class Matches {
     private String name;
     //private String description;
-    private String imageUrL;
     private boolean liked;
+    private String imageUrl;
+
     private String lat;
     private String longitude;
     private String uid;
@@ -12,7 +13,6 @@ public class Matches {
     public Matches() {
 
     }
-
 
     public String getName() {
         return name;
@@ -22,17 +22,13 @@ public class Matches {
         this.name = name;
     }
 
-   /*public String getDescription() {
-        return description;
-    }*/
-
     public String getImageUrL() {
-        return imageUrL;
+        return imageUrl;
     }
 
-    /*public void setDescription(String description) {
-        this.description = description;
-    }*/
+    public void setImageUrL(String imageUrL) {
+        this.imageUrl = imageUrL;
+    }
 
     public boolean isLiked() {
         return liked;
@@ -41,9 +37,7 @@ public class Matches {
     public void setLiked(boolean liked) {
         this.liked = liked;
     }
-    public void setimageUrL(String imageUrL) {
-        this.imageUrL = imageUrL;
-    }
+
     public String getLat() {
         return lat;
     }
@@ -67,4 +61,9 @@ public class Matches {
     public void setUid(String uid) {
         this.uid = uid;
     }
+
+
+
+
+
 }

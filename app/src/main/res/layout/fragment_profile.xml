@@ -8,7 +8,7 @@
     <ImageView
         android:contentDescription="@string/profile_picture"
         android:id="@+id/id_image"
-        android:src="@color/design_default_color_primary_variant"
+        android:src="@drawable/profile_picture"
         android:layout_width="match_parent"
         android:layout_height="400dp"
         android:layout_above="@id/thank_you_user"

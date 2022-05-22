@@ -1,7 +1,7 @@
 package com.example.helloworld;
 
 import android.view.View;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -13,7 +13,7 @@ public class MatchesViewHolder extends RecyclerView.ViewHolder {
     public ImageView matchesImage;
     public TextView matchesName;
     public TextView matchesDescription;
-    public Button likeButton;
+    public ImageButton likeButton;
 
     public MatchesViewHolder(@NonNull View itemView) {
         super(itemView);
