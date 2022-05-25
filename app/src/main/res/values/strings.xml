@@ -44,4 +44,15 @@
     <string name="matches_image">matches image</string>
     <string name="like_button">like</string>
     <string name="you_liked">you liked: %s</string>
+    <string name="private_radio">private radio</string>
+    <string name="public_radio">public radio</string>
+    <string name="prefer_not_to_answer">prefer not to answer</string>
+    <string name="they_them">they/them</string>
+    <string name="she_her">she/her</string>
+
+    <string name="selected_time">selected time</string>
+    <string name="selected_time_message">Selected Time: %d:%s</string>
+    <string name="select_reminder_time_title">Select Reminder Time</string>
+    <string name="invalid_settings">You have inputted invalid settings</string>
+    <string name="he_him">he/him</string>
 </resources>
