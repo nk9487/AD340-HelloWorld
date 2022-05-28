@@ -126,6 +126,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@+id/age_range_label"
         android:stepSize="1"
+        app:values="@array/initial_slider_value"
         android:valueFrom="18"
         android:valueTo="100"/>
 
