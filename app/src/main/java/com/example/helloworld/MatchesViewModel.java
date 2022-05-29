@@ -1,5 +1,7 @@
 package com.example.helloworld;
 
+import android.location.Location;
+
 import com.google.firebase.firestore.DocumentSnapshot;
 import com.google.firebase.firestore.QuerySnapshot;
 
@@ -14,18 +16,33 @@ public class MatchesViewModel {
         matchesDataModel = new MatchesDataModel();
     }
 /**pulls a list of items from the data base*/
-    public void getMatches(Consumer<ArrayList<Matches>> responseCallback) {
+    public void getMatches(Location location, float maxDistnace, Consumer<ArrayList<Matches>> responseCallback) {
         matchesDataModel.getMatches(
                 (QuerySnapshot querySnapshot) -> {
                     if (querySnapshot != null) {
-                        ArrayList<Matches> todoItems = new ArrayList<>();
+                        ArrayList<Matches> matchList= new ArrayList<>();
                         for (DocumentSnapshot todoSnapshot : querySnapshot.getDocuments()) {
                             Matches item = todoSnapshot.toObject(Matches.class);
                             assert item != null;
                             item.setUid(todoSnapshot.getId());
-                            todoItems.add(item);
+                            matchList.add(item);
                         }
-                        responseCallback.accept(todoItems);
+                        ArrayList<Matches> filteredMatches = new ArrayList<>();
+                        for (Matches match : matchList){
+                            Location targetLocation = new Location("");
+                            targetLocation.setLatitude(Double.parseDouble(match.getLat()));
+                            targetLocation.setLongitude(Double.parseDouble(match.getLat()));
+
+                            float distance = location.distanceTo(targetLocation);
+                            float miles = distance/ 1609.344f;
+
+                            if (miles <= maxDistnace){
+                                filteredMatches.add(match);
+                            }
+                        }
+
+
+                        responseCallback.accept(matchList);
                     }
                 },
                 (databaseError -> System.out.println("Error reading Todo Items: " + databaseError))

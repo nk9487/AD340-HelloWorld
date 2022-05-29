@@ -55,4 +55,8 @@
     <string name="select_reminder_time_title">Select Reminder Time</string>
     <string name="invalid_settings">You have inputted invalid settings</string>
     <string name="he_him">he/him</string>
+    <string name="Started_Location_Updates">Started Location Update</string>
+    <string name="Enable_Location">Enable Location</string>
+    <string name="Location_Service">Please turn location services to use this feature</string>
+    <string name="Location_Setting">Location setting</string>
 </resources>

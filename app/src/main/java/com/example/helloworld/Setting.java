@@ -7,6 +7,7 @@ import androidx.room.PrimaryKey;
 
 @Entity
 public class Setting{
+
     @PrimaryKey
     @NonNull
     private String id = "";

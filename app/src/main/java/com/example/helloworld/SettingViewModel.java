@@ -6,7 +6,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.ViewModel;
 
 public class SettingViewModel extends ViewModel {
-    public static final String superSecretSettingsId = "4bb18199-3d3b-428b-83ec-c69771747301";
+    public static final String superSecretSettingsId = "5eea6514-3342-4225-8bb3-3284016ca8fc";
 
     public LiveData<Setting> getSetting(Context context) {
         AppDatabase db = AppDatabaseSingleton.getDatabase(context);
