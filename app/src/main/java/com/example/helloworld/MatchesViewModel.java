@@ -16,7 +16,7 @@ public class MatchesViewModel {
         matchesDataModel = new MatchesDataModel();
     }
 /**pulls a list of items from the data base*/
-    public void getMatches(Location location, float maxDistnace, Consumer<ArrayList<Matches>> responseCallback) {
+    public void getMatches(Location location, float maxDistance, Consumer<ArrayList<Matches>> responseCallback) {
         matchesDataModel.getMatches(
                 (QuerySnapshot querySnapshot) -> {
                     if (querySnapshot != null) {
@@ -31,21 +31,19 @@ public class MatchesViewModel {
                         for (Matches match : matchList){
                             Location targetLocation = new Location("");
                             targetLocation.setLatitude(Double.parseDouble(match.getLat()));
-                            targetLocation.setLongitude(Double.parseDouble(match.getLat()));
+                            targetLocation.setLongitude(Double.parseDouble(match.getLongitude()));
 
                             float distance = location.distanceTo(targetLocation);
                             float miles = distance/ 1609.344f;
 
-                            if (miles <= maxDistnace){
+                            if (miles <= maxDistance){
                                 filteredMatches.add(match);
                             }
                         }
-
-
-                        responseCallback.accept(matchList);
+                        responseCallback.accept(filteredMatches);
                     }
                 },
-                (databaseError -> System.out.println("Error reading Todo Items: " + databaseError))
+                (databaseError -> System.out.println("Error reading matchList Items: " + databaseError))
         );
     }
 
@@ -56,5 +54,4 @@ public class MatchesViewModel {
     public void clear() {
         matchesDataModel.clear();
     }
-
 }

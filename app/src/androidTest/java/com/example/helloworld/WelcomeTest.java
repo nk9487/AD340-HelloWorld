@@ -9,12 +9,16 @@ import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
-
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static com.example.helloworld.RecyclerViewMatcher.withRecyclerView;
 
+import android.os.Build;
+
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -25,28 +29,36 @@ public class WelcomeTest {
     public ActivityScenarioRule<Welcome> welcomeScreenActivity =
             new ActivityScenarioRule<>(Welcome.class);
 
+    @Before
+    public void setUp() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getInstrumentation().getUiAutomation().executeShellCommand(
+                    "app set " + ApplicationProvider.getApplicationContext().getPackageName() + " android:mock_location allow");
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Test
     public void clickingOnMatchesDrawerItemDisplaysMatchesFragment() {
         onView(withContentDescription("open navigation drawer")).perform(click());
         onView(withId(R.id.matches_menu_item)).perform(click());
 
-        onView(isRoot()).perform(HelpersViewMatcher.waitView(withText("Cool Guy Mike"), 5000));
+        onView(isRoot()).perform(HelpersViewMatcher.waitView(withText("Cool Guy Mike"), 10000));
 
         onView(withRecyclerView(R.id.recycler_view).atPosition(0))
                 .check(matches(hasDescendant(withText("Cool Guy Mike"))));
-
     }
 
-    /*Test for setting.
-        @Test
+    @Test
     public void clickingOnSettingsDrawerItemDisplaysSettingsFragment() {
-        onView(withContentDescription("Open navigation drawer")).perform(click());
+        onView(withContentDescription("open navigation drawer")).perform(click());
         onView(withId(R.id.settings_menu_item)).perform(click());
 
         onView(withId(R.id.matches_reminder_time_label)).check(
-                matches(withText("Pick your daily matches reminder time")));
+                matches(withText("Reminder Time")));
     }
-
-    * */
 }
