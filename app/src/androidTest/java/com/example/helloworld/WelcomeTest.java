@@ -9,11 +9,16 @@ import static androidx.test.espresso.matcher.ViewMatchers.isRoot;
 import static androidx.test.espresso.matcher.ViewMatchers.withContentDescription;
 import static androidx.test.espresso.matcher.ViewMatchers.withId;
 import static androidx.test.espresso.matcher.ViewMatchers.withText;
+import static androidx.test.platform.app.InstrumentationRegistry.getInstrumentation;
 import static com.example.helloworld.RecyclerViewMatcher.withRecyclerView;
 
+import android.os.Build;
+
+import androidx.test.core.app.ApplicationProvider;
 import androidx.test.ext.junit.rules.ActivityScenarioRule;
 import androidx.test.ext.junit.runners.AndroidJUnit4;
 
+import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -24,18 +29,18 @@ public class WelcomeTest {
     public ActivityScenarioRule<Welcome> welcomeScreenActivity =
             new ActivityScenarioRule<>(Welcome.class);
 
-//    @Before
-//    public void setUp() {
-//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-//            getInstrumentation().getUiAutomation().executeShellCommand(
-//                    "app set " + ApplicationProvider.getApplicationContext().getPackageName() + " android:mock_location allow");
-//            try {
-//                Thread.sleep(5000);
-//            } catch (InterruptedException e) {
-//                e.printStackTrace();
-//            }
-//        }
-//    }
+    @Before
+    public void setUp() {
+        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            getInstrumentation().getUiAutomation().executeShellCommand(
+                    "app set " + ApplicationProvider.getApplicationContext().getPackageName() + " android:mock_location allow");
+            try {
+                Thread.sleep(5000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     @Test
     public void clickingOnMatchesDrawerItemDisplaysMatchesFragment() {
