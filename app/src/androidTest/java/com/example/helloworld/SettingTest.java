@@ -18,168 +18,164 @@ import org.hamcrest.Matchers;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.runner.RunWith;
-
+@RunWith(AndroidJUnit4.class)
 public class SettingTest {
+    @Rule
+    public ActivityScenarioRule<Welcome> welcomeScreenActivity =
+            new ActivityScenarioRule<>(Welcome.class);
 
+    @Test
+    public void canSaveSettings() {
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.settings_menu_item)).perform(click());
 
-    @RunWith(AndroidJUnit4.class)
-    public class SettingsScreenTest {
-        @Rule
-        public ActivityScenarioRule<Welcome> welcomeScreenActivity =
-                new ActivityScenarioRule<>(Welcome.class);
+        onView(withId(R.id.select_matches_time_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
+                .perform(PickerActions.setTime(10, 0));
+        onView(withId(android.R.id.button1)).perform(click());
 
-        @Test
-        public void canSaveSettings() {
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.settings_menu_item)).perform(click());
+        onView(withId(R.id.edit_text_distance_in_miles)).perform(replaceText("50"));
 
-            onView(withId(R.id.select_matches_time_button)).perform(click());
-            onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
-                    .perform(PickerActions.setTime(10, 0));
-            onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.radio_he_him)).perform(click());
 
-            onView(withId(R.id.edit_text_distance_in_miles)).perform(replaceText("50"));
+        onView(withId(R.id.radio_privacy)).perform(click());
 
-            onView(withId(R.id.radio_he_him)).perform(click());
+        onView(withId(R.id.age_range_slider)).perform(HelpersViewMatcher.setValue(25.0F, 35.0F));
 
-            onView(withId(R.id.radio_privacy)).perform(click());
+        onView(withId(R.id.saveButton)).perform(click());
 
-            onView(withId(R.id.age_range_slider)).perform(HelpersViewMatcher.setValue(25.0F, 35.0F));
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.matches_menu_item)).perform(click());
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.settings_menu_item)).perform(click());
 
-            onView(withId(R.id.saveButton)).perform(click());
+        onView(withId(R.id.edit_text_distance_in_miles)).check(matches(withText("50")));
+    }
 
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.matches_menu_item)).perform(click());
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.settings_menu_item)).perform(click());
+    @Test
+    public void canSaveWithSheHer() {
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.settings_menu_item)).perform(click());
 
-            onView(withId(R.id.edit_text_distance_in_miles)).check(matches(withText("50")));
-        }
+        onView(withId(R.id.select_matches_time_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
+                .perform(PickerActions.setTime(10, 0));
+        onView(withId(android.R.id.button1)).perform(click());
 
-        @Test
-        public void canSaveWithSheHer() {
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.settings_menu_item)).perform(click());
+        onView(withId(R.id.edit_text_distance_in_miles)).perform(replaceText("50"));
 
-            onView(withId(R.id.select_matches_time_button)).perform(click());
-            onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
-                    .perform(PickerActions.setTime(10, 0));
-            onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.radio_she_her)).perform(click());
 
-            onView(withId(R.id.edit_text_distance_in_miles)).perform(replaceText("50"));
+        onView(withId(R.id.radio_privacy)).perform(click());
 
-            onView(withId(R.id.radio_she_her)).perform(click());
+        onView(withId(R.id.age_range_slider)).perform(HelpersViewMatcher.setValue(25.0F, 35.0F));
 
-            onView(withId(R.id.radio_privacy)).perform(click());
+        onView(withId(R.id.saveButton)).perform(click());
 
-            onView(withId(R.id.age_range_slider)).perform(HelpersViewMatcher.setValue(25.0F, 35.0F));
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.matches_menu_item)).perform(click());
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.settings_menu_item)).perform(click());
 
-            onView(withId(R.id.saveButton)).perform(click());
+        onView(withId(R.id.edit_text_distance_in_miles)).check(matches(withText("50")));
+    }
 
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.matches_menu_item)).perform(click());
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.settings_menu_item)).perform(click());
+    @Test
+    public void canSaveWithTheyThem() {
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.settings_menu_item)).perform(click());
 
-            onView(withId(R.id.edit_text_distance_in_miles)).check(matches(withText("50")));
-        }
+        onView(withId(R.id.select_matches_time_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
+                .perform(PickerActions.setTime(10, 0));
+        onView(withId(android.R.id.button1)).perform(click());
 
-        @Test
-        public void canSaveWithTheyThem() {
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.settings_menu_item)).perform(click());
+        onView(withId(R.id.edit_text_distance_in_miles)).perform(replaceText("50"));
 
-            onView(withId(R.id.select_matches_time_button)).perform(click());
-            onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
-                    .perform(PickerActions.setTime(10, 0));
-            onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.radio_they_them)).perform(click());
 
-            onView(withId(R.id.edit_text_distance_in_miles)).perform(replaceText("50"));
+        onView(withId(R.id.radio_privacy)).perform(click());
 
-            onView(withId(R.id.radio_they_them)).perform(click());
+        onView(withId(R.id.age_range_slider)).perform(HelpersViewMatcher.setValue(25.0F, 35.0F));
 
-            onView(withId(R.id.radio_privacy)).perform(click());
+        onView(withId(R.id.saveButton)).perform(click());
 
-            onView(withId(R.id.age_range_slider)).perform(HelpersViewMatcher.setValue(25.0F, 35.0F));
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.matches_menu_item)).perform(click());
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.settings_menu_item)).perform(click());
 
-            onView(withId(R.id.saveButton)).perform(click());
+        onView(withId(R.id.edit_text_distance_in_miles)).check(matches(withText("50")));
+    }
 
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.matches_menu_item)).perform(click());
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.settings_menu_item)).perform(click());
+    @Test
+    public void canSaveWithNoAnswer() {
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.settings_menu_item)).perform(click());
 
-            onView(withId(R.id.edit_text_distance_in_miles)).check(matches(withText("50")));
-        }
+        onView(withId(R.id.select_matches_time_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
+                .perform(PickerActions.setTime(10, 0));
+        onView(withId(android.R.id.button1)).perform(click());
 
-        @Test
-        public void canSaveWithNoAnswer() {
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.settings_menu_item)).perform(click());
+        onView(withId(R.id.edit_text_distance_in_miles)).perform(replaceText("50"));
 
-            onView(withId(R.id.select_matches_time_button)).perform(click());
-            onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
-                    .perform(PickerActions.setTime(10, 0));
-            onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.radio_no_answer)).perform(click());
 
-            onView(withId(R.id.edit_text_distance_in_miles)).perform(replaceText("50"));
+        onView(withId(R.id.radio_privacy)).perform(click());
 
-            onView(withId(R.id.radio_no_answer)).perform(click());
+        onView(withId(R.id.age_range_slider)).perform(HelpersViewMatcher.setValue(25.0F, 35.0F));
 
-            onView(withId(R.id.radio_privacy)).perform(click());
+        onView(withId(R.id.saveButton)).perform(click());
 
-            onView(withId(R.id.age_range_slider)).perform(HelpersViewMatcher.setValue(25.0F, 35.0F));
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.matches_menu_item)).perform(click());
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.settings_menu_item)).perform(click());
 
-            onView(withId(R.id.saveButton)).perform(click());
+        onView(withId(R.id.edit_text_distance_in_miles)).check(matches(withText("50")));
+    }
 
-            onView(withContentDescription("Open navigation drawer")).perform(click());
-            onView(withId(R.id.matches_menu_item)).perform(click());
-            onView(withContentDescription("Open navigation drawer")).perform(click());
-            onView(withId(R.id.settings_menu_item)).perform(click());
+    @Test
+    public void canSaveWithPublic() {
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.settings_menu_item)).perform(click());
 
-            onView(withId(R.id.edit_text_distance_in_miles)).check(matches(withText("50")));
-        }
+        onView(withId(R.id.select_matches_time_button)).perform(click());
+        onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
+                .perform(PickerActions.setTime(10, 0));
+        onView(withId(android.R.id.button1)).perform(click());
 
-        @Test
-        public void canSaveWithPublic() {
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.settings_menu_item)).perform(click());
+        onView(withId(R.id.edit_text_distance_in_miles)).perform(replaceText("50"));
 
-            onView(withId(R.id.select_matches_time_button)).perform(click());
-            onView(withClassName(Matchers.equalTo(TimePicker.class.getName())))
-                    .perform(PickerActions.setTime(10, 0));
-            onView(withId(android.R.id.button1)).perform(click());
+        onView(withId(R.id.radio_he_him)).perform(click());
 
-            onView(withId(R.id.edit_text_distance_in_miles)).perform(replaceText("50"));
+        onView(withId(R.id.radio_public)).perform(click());
 
-            onView(withId(R.id.radio_he_him)).perform(click());
+        onView(withId(R.id.radio_privacy)).perform(click());
 
-            onView(withId(R.id.radio_public)).perform(click());
+        onView(withId(R.id.age_range_slider)).perform(HelpersViewMatcher.setValue(25.0F, 35.0F));
 
-            onView(withId(R.id.radio_privacy)).perform(click());
+        onView(withId(R.id.saveButton)).perform(click());
 
-            onView(withId(R.id.age_range_slider)).perform(HelpersViewMatcher.setValue(25.0F, 35.0F));
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.matches_menu_item)).perform(click());
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.settings_menu_item)).perform(click());
 
-            onView(withId(R.id.saveButton)).perform(click());
+        onView(withId(R.id.edit_text_distance_in_miles)).check(matches(withText("50")));
+    }
 
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.matches_menu_item)).perform(click());
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.settings_menu_item)).perform(click());
+    @Test
+    public void cannotSaveWithMissingTime() {
+        onView(withContentDescription("open navigation drawer")).perform(click());
+        onView(withId(R.id.settings_menu_item)).perform(click());
 
-            onView(withId(R.id.edit_text_distance_in_miles)).check(matches(withText("50")));
-        }
+        onView(withId(R.id.edit_text_distance_in_miles)).perform(replaceText(""));
 
-        @Test
-        public void cannotSaveWithMissingTime() {
-            onView(withContentDescription("open navigation drawer")).perform(click());
-            onView(withId(R.id.settings_menu_item)).perform(click());
+        onView(withId(R.id.saveButton)).perform(click());
 
-            onView(withId(R.id.edit_text_distance_in_miles)).perform(replaceText(""));
-
-            onView(withId(R.id.saveButton)).perform(click());
-
-            onView(withId(R.id.edit_text_distance_in_miles)).check(matches(withText("")));
-        }
+        onView(withId(R.id.edit_text_distance_in_miles)).check(matches(withText("")));
     }
 }
+
