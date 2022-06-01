@@ -8,6 +8,7 @@ import android.location.LocationListener;
 import android.location.LocationManager;
 import android.os.Bundle;
 import android.provider.Settings;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -122,19 +123,21 @@ public class MatchesFragment extends Fragment {
 
     private final LocationListener locationListenerNetwork = new LocationListener() {
         public void onLocationChanged(Location location) {
+            Log.i(MatchesFragment.class.getSimpleName(), "Latitude: " + location.getLatitude() + " Longitude: " + location.getLongitude());
             final Observer<com.example.helloworld.Setting> getSettingsObserver = newSettings -> {
-                if (newSettings == null) {
-                    return;
-                }
-
                 float maxDistance = 0.0f;
-                try {
-                    maxDistance = Float.parseFloat(newSettings.getMaxDistance());
-                } catch (NumberFormatException e) {
+                if (newSettings == null) {
+                    Log.i(MatchesFragment.class.getSimpleName(), "Settings is null");
                     maxDistance = 10.0f;
+                }else{
+                    try {
+                        maxDistance = Float.parseFloat(newSettings.getMaxDistance());
+                    } catch (NumberFormatException e) {
+                        maxDistance = 10.0f;
+                    }
                 }
-
                 vm.getMatches(location, maxDistance, matches -> {
+                    Log.i(MatchesFragment.class.getSimpleName(), "Matches list is : " + matches.size());
                     matchesList.clear();
                     matchesList.addAll(matches);
                     adapter.notifyDataSetChanged();
