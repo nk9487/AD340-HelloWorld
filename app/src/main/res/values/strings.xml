@@ -49,6 +49,8 @@
     <string name="prefer_not_to_answer">prefer not to answer</string>
     <string name="they_them">they/them</string>
     <string name="she_her">she/her</string>
+    <string name="thanks_text">Thanks for Signing Up %1$s!</string>
+
 
     <string name="selected_time">selected time</string>
     <string name="selected_time_message">Selected Time: %d:%s</string>
