@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
             return;
 
         }
-        Intent intent = new Intent(getApplicationContext(), Welcome.class);
+        Intent intent = new Intent(getApplicationContext(), Welcomes.class);
         intent.putExtra(Constants.USER_NAME_KEY, username);
         intent.putExtra(Constants.USER_AGE_KEY, ""+calculatedYear);
         intent.putExtra(Constants.USER_DESCRIPTION_KEY, description);
@@ -134,6 +134,7 @@ public class MainActivity extends AppCompatActivity implements DatePickerDialog.
     public static class DatePickerFragment extends DialogFragment  {
         @NonNull
         @Override
+
         public Dialog onCreateDialog(Bundle savedInstances){
             final Calendar c = Calendar.getInstance();
             int year = c.get(Calendar.YEAR);

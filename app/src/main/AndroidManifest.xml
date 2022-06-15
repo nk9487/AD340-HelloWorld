@@ -15,6 +15,10 @@
             android:name=".Welcome"
             android:exported="true">
         </activity>
+        <activity
+            android:name=".Welcomes"
+            android:exported="true">
+        </activity>
 
         <activity
             android:name=".MainActivity"
